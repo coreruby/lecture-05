@@ -160,6 +160,14 @@ section.center
       p enum.peek   #raises StopIteration
 
 section
+  h2 Enumerator#rewind
+  p Rewinds the enumeration sequence to the beginning.
+
+section
+  h2 Enumerator#rewind
+  p If the enclosed object responds to a “rewind” method, it is called.
+
+section
   h2 Enumerator#with_object
   p 
 
@@ -169,4 +177,33 @@ section
 
 section
   h2 Enumerator#with_object
-  p 
+  p Iterates the given block for each element with an arbitrary object, obj, and returns obj
+
+section
+  h2 Enumerator#with_object
+  p If no block is given, returns a new Enumerator.
+
+section.center
+  pre: code.ruby
+    '
+      to_three = Enumerator.new do |yielder|
+        3.times do |x|
+          yielder << x
+        end
+      end
+
+      to_three_with_string = to_three.with_object("foo")
+      to_three_with_string.each do |x, string|
+        puts string + x.to_s
+      end
+
+      #=> foo:0
+      #=> foo:1
+      #=> foo:2
+
+section
+  h2 Enumerator#with_object
+  p Its kinda like Enumerable#reduce.
+
+section.center data-background="#000"
+  p.white kinda
