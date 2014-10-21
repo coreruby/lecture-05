@@ -9,154 +9,170 @@
   </head>
   <body>
     <div class="reveal">
-      <div class="slides">
-        <section class="center" data-background="#000">
-          <h1 class="white">
-            Enumerator
-          </h1>
-        </section>
-        <section class="center" data-background="#000">
-          <h2 class="white">
-            Questions
-          </h2>
-        </section>
-        <section class="center">
-          <p>
-            What is Enumerable?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is a side effect?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            When do we use #each?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is #collect and when do we use it?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is #select and when do we use it?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is #reduce and when do we use it?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is a proc?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is a lambda?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is the difference between proc and lambda?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is the return type of Hash#map?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is the return type of Hash#select?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is the difference between Array#map and Array#map!?
-          </p>
-        </section>
-        <section class="center">
-          <p>
-            What is a bang method and what does we use it for?
-          </p>
-        </section>
-        <section class="center" data-background="#000">
-          <p class="white">
-            What should #each return when no block is given?
-          </p>
-        </section>
-        <section>
-          <h2>
-            Enumerator
-          </h2>
-          <p>
-            An <a href="http://c2.com/cgi/wiki?ExternalIterator">External Iterator</a>  is an object that represents a location within a collection.
-          </p>
-        </section>
-        <section>
-          <h2>
-            Enumerator
-          </h2>
-          <p>
-            They are used in conjunction with a loop to traverse all the elements in the collection.
-          </p>
-        </section>
-        <section>
-          <h2>
-            Enumerator
-          </h2>
-          <p>
-            Each iteration of the loop contains a statement that increments the logical position of the object within the collection.
-          </p>
-        </section>
-        <section>
-          <h2>
-            Enumerator
-          </h2>
-          <p>
-            The rest of the instructions in the loop body can use the External Iterator to examine and, often, change the contents of the collection at the location it represents.
-          </p>
-        </section>
-        <section data-background="#000">
-          <h2 class="white">
-            Enumerable
-          </h2>
-          <p class="white">
-            On the other side, Enumerable is an <a class="white" href="http://c2.com/cgi/wiki?InternalIterator">Internal Iterator</a>.
-          </p>
-        </section>
-        <section data-background="#000">
-          <h2 class="white">
-            Enumerable
-          </h2>
-          <p class="white">
-            An Internal Iterator is a higher order function that takes a collection and a function and applies the function to every element of the collection.
-          </p>
-        </section>
-        <section data-background="#000">
-          <h2 class="white">
-            Enumerable
-          </h2>
-          <p class="white">
-            Usually the Internal Iterator is a member function of the collection and so doesn't require a specific collection parameter.
-          </p>
-        </section>
-        <section data-background="#000">
-          <h2 class="white">
-            Enumerable
-          </h2>
-          <p class="white">
-            The function parameter takes a single argument of the same type as the members of the collection.
-          </p>
-        </section>
-        <section class="center">
-          <img class="inline" src="img/troll.png" />
-        </section>
+      <div class="slides"><section class="center" data-background="#000">
+  <h1 class="white">
+    Enumerator
+  </h1>
+</section>
+<section class="center" data-background="#000">
+  <h2 class="white">
+    Questions
+  </h2>
+</section>
+<section class="center">
+  <p>
+    What is Enumerable?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is a side effect?
+  </p>
+</section>
+<section class="center">
+  <p>
+    When do we use #each?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is #collect and when do we use it?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is #select and when do we use it?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is #reduce and when do we use it?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is a proc?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is a lambda?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is the difference between proc and lambda?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is the return type of Hash#map?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is the return type of Hash#select?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is the difference between Array#map and Array#map!?
+  </p>
+</section>
+<section class="center">
+  <p>
+    What is a bang method and what does we use it for?
+  </p>
+</section>
+<section class="center" data-background="#000">
+  <p class="white">
+    What should #each return when no block is given?
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator
+  </h2>
+  <p>
+    An <a href="http://c2.com/cgi/wiki?ExternalIterator">External Iterator</a>  is an object that represents a location within a collection.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator
+  </h2>
+  <p>
+    They are used in conjunction with a loop to traverse all the elements in the collection.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator
+  </h2>
+  <p>
+    Each iteration of the loop contains a statement that increments the logical position of the object within the collection.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator
+  </h2>
+  <p>
+    The rest of the instructions in the loop body can use the External Iterator to examine and, often, change the contents of the collection at the location it represents.
+  </p>
+</section>
+<section data-background="#000">
+  <h2 class="white">
+    Enumerable
+  </h2>
+  <p class="white">
+    On the other side, Enumerable is an <a class="white" href="http://c2.com/cgi/wiki?InternalIterator">Internal Iterator</a>.
+  </p>
+</section>
+<section data-background="#000">
+  <h2 class="white">
+    Enumerable
+  </h2>
+  <p class="white">
+    An Internal Iterator is a higher order function that takes a collection and a function and applies the function to every element of the collection.
+  </p>
+</section>
+<section data-background="#000">
+  <h2 class="white">
+    Enumerable
+  </h2>
+  <p class="white">
+    Usually the Internal Iterator is a member function of the collection and so doesn't require a specific collection parameter.
+  </p>
+</section>
+<section data-background="#000">
+  <h2 class="white">
+    Enumerable
+  </h2>
+  <p class="white">
+    The function parameter takes a single argument of the same type as the members of the collection.
+  </p>
+</section>
+<section class="center">
+  <img class="inline" src="img/troll.png" />
+</section>
+<section class="center">
+  <pre><code class="ruby">class Hash
+  # Returns a new hash with the results of running +block+ once for every value.
+  # The keys are unchanged.
+  #
+  #   { a: 1, b: 2, c: 3 }.transform_values { |x| x * 2 }
+  #   # => { a: 2, b: 4, c: 6 }
+  def transform_values
+    return enum_for(:transform_values) unless block_given?
+    result = self.class.new
+    each do |key, value|
+      result[key] = yield(value)
+    end
+    result
+  end
+end </code></pre>
+</section>
       </div>
     </div>
     <script src="js/head.min.js"></script>

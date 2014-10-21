@@ -80,3 +80,22 @@ section data-background="#000"
 
 section.center
   img.inline src="img/troll.png"
+
+section.center
+  pre: code.ruby
+    '
+      class Hash
+        # Returns a new hash with the results of running +block+ once for every value.
+        # The keys are unchanged.
+        #
+        #   { a: 1, b: 2, c: 3 }.transform_values { |x| x * 2 }
+        #   # => { a: 2, b: 4, c: 6 }
+        def transform_values
+          return enum_for(:transform_values) unless block_given?
+          result = self.class.new
+          each do |key, value|
+            result[key] = yield(value)
+          end
+          result
+        end
+      end
