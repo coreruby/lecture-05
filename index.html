@@ -205,6 +205,81 @@
   end
 end </code></pre>
 </section>
+<section>
+  <h2>
+    Enumerator
+  </h2>
+  <p>
+    Most methods have two forms: a block form where the contents are evaluated for each item in the enumeration, and a non-block form which returns a new Enumerator wrapping the iteration.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator#next
+  </h2>
+  <p>
+    Returns the next object in the enumerator, and move the internal position forward.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator#next
+  </h2>
+  <p>
+    When the position reached at the end, StopIteration is raised.
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby">enum = [1, 2, 3].to_enum
+p enum.next   #=> 1
+p enum.next   #=> 2
+p enum.next   #=> 3
+p enum.next   #raises StopIteration </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerator#peek
+  </h2>
+  <p>
+    Returns the next object in the enumerator, but doesn’t move the internal position 
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator#peek
+  </h2>
+  <p>
+    When the position reached at the end, StopIteration is raised.
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby">enum = [1, 2, 3].to_enum
+p enum.next   #=> 1
+p enum.peek   #=> 2
+p enum.peek   #=> 2
+p enum.peek   #=> 2
+p enum.next   #=> 2
+p enum.next   #=> 3
+p enum.peek   #raises StopIteration  </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerator#with_object
+  </h2>
+  <p></p>
+</section>
+<section>
+  <h2>
+    Enumerator#with_index
+  </h2>
+  <p></p>
+</section>
+<section>
+  <h2>
+    Enumerator#with_object
+  </h2>
+  <p></p>
+</section>
       </div>
     </div>
     <script src="js/head.min.js"></script>

@@ -114,3 +114,57 @@ section.center
           result
         end
       end
+
+section
+  h2 Enumerator
+  p Most methods have two forms: a block form where the contents are evaluated for each item in the enumeration, and a non-block form which returns a new Enumerator wrapping the iteration.
+
+section
+  h2 Enumerator#next
+  p Returns the next object in the enumerator, and move the internal position forward.
+
+section
+  h2 Enumerator#next
+  p When the position reached at the end, StopIteration is raised.
+
+section.center
+  pre: code.ruby
+    '
+      enum = [1, 2, 3].to_enum
+      p enum.next   #=> 1
+      p enum.next   #=> 2
+      p enum.next   #=> 3
+      p enum.next   #raises StopIteration
+
+section
+  h2 Enumerator#peek
+  p Returns the next object in the enumerator, but doesn’t move the internal position 
+
+section
+  h2 Enumerator#peek
+  p When the position reached at the end, StopIteration is raised.
+
+section.center
+  pre: code.ruby
+    '
+      enum = [1, 2, 3].to_enum
+      p enum.next   #=> 1
+      p enum.peek   #=> 2
+      p enum.peek   #=> 2
+      p enum.peek   #=> 2
+      p enum.next   #=> 2
+      p enum.next   #=> 3
+      p enum.peek   #raises StopIteration
+    '
+
+section
+  h2 Enumerator#with_object
+  p 
+
+section
+  h2 Enumerator#with_index
+  p 
+
+section
+  h2 Enumerator#with_object
+  p 
