@@ -241,7 +241,7 @@ section
       puts %w(foo bar baz).map.with_index { |word, i| word + ":" + i.to_s }
       #=> ["0:foo", "1:bar", "2:baz"]
 
-section data-background="#001"
+section.center data-background="#000"
   p.white See Enumerable#each_with_index
 
 section
@@ -277,5 +277,5 @@ section
 section.center data-background="#000"
   p.white kinda
 
-section data-background="#000"
+section.center data-background="#000"
   p.white See Enumerable#each_with_object
