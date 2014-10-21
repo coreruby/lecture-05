@@ -91,12 +91,12 @@ section
   h2 Enumerator
   p An Enumerator can be created by the following methods.
   ul
-    li Kernel#enum_for
-    li Kernel#to_enum
+    li Object#enum_for
+    li Object#to_enum
     li Enumerator.new
 
 section
-  h2 Kernel#enum_for
+  h2 Object#enum_for
   p The easiest way to create an external iterator out of internal one.
 
 section.center
@@ -117,6 +117,66 @@ section.center
           result
         end
       end
+
+section
+  h2 Object#enum_for
+  p Creates a new Enumerator which will enumerate by calling method on obj, passing args if any.
+
+section
+  h2 Object#enum_for
+  p If a block is given, it will be used to calculate the size of the enumerator without the need to iterate it (see Enumerator#size).
+
+section.center
+  pre: code.ruby
+    '
+      str = "xyz"
+
+      enum = str.enum_for(:each_byte)
+      enum.each { |b| puts b }
+      # => 120
+      # => 121
+      # => 122
+
+      # protect an array from being modified by some_method
+      a = [1, 2, 3]
+      some_method(a.to_enum)
+
+section
+  h2 Object#to_enum
+  p Behaves like Object#enum_for.
+
+section
+  h2 Object#to_enum
+  p Creates an Enumerator out of the receiver #each method by default.
+
+section
+  h2 Enumerator.new
+  p Creates a new Enumerator object, which can be used as an Enumerable.
+
+section.center
+  pre: code.ruby
+    '
+      fib = Enumerator.new do |yielder|
+        a = b = 1
+        loop do
+          yielder << a
+          a, b = b, a + b
+        end
+      end
+
+      p fib.take(10) # => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+section
+  h2 Enumerator.new
+  p Use of this form is discouraged. Use Object#enum_for or Object#to_enum instead.
+
+  pre: code.ruby
+    '
+      e = Enumerator.new(ObjectSpace, :each_object)
+          #-> ObjectSpace.enum_for(:each_object)
+
+      e.select { |obj| obj.is_a?(Class) }  #=> array of all classes
+
 
 section
   h2 Enumerator
@@ -168,12 +228,21 @@ section
   p If the enclosed object responds to a “rewind” method, it is called.
 
 section
-  h2 Enumerator#with_object
-  p 
+  h2 Enumerator#with_index
+  p Iterates the given block for each element with an index, which starts from offset.
 
 section
   h2 Enumerator#with_index
-  p 
+  p If no block is given, returns a new Enumerator that includes the index, starting from offset.
+
+section
+  pre: code.ruby
+    '
+      puts %w(foo bar baz).map.with_index { |word, i| word + ":" + i.to_s }
+      #=> ["0:foo", "1:bar", "2:baz"]
+
+section data-background="#001"
+  p.white See Enumerable#each_with_index
 
 section
   h2 Enumerator#with_object
@@ -207,3 +276,6 @@ section
 
 section.center data-background="#000"
   p.white kinda
+
+section data-background="#000"
+  p.white See Enumerable#each_with_object

@@ -175,10 +175,10 @@
   </p>
   <ul>
     <li>
-      Kernel#enum_for
+      Object#enum_for
     </li>
     <li>
-      Kernel#to_enum
+      Object#to_enum
     </li>
     <li>
       Enumerator.new
@@ -187,7 +187,7 @@
 </section>
 <section>
   <h2>
-    Kernel#enum_for
+    Object#enum_for
   </h2>
   <p>
     The easiest way to create an external iterator out of internal one.
@@ -209,6 +209,82 @@
     result
   end
 end </code></pre>
+</section>
+<section>
+  <h2>
+    Object#enum_for
+  </h2>
+  <p>
+    Creates a new Enumerator which will enumerate by calling method on obj, passing args if any.
+  </p>
+</section>
+<section>
+  <h2>
+    Object#enum_for
+  </h2>
+  <p>
+    If a block is given, it will be used to calculate the size of the enumerator without the need to iterate it (see Enumerator#size).
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby">str = "xyz"
+
+enum = str.enum_for(:each_byte)
+enum.each { |b| puts b }
+# => 120
+# => 121
+# => 122
+
+# protect an array from being modified by some_method
+a = [1, 2, 3]
+some_method(a.to_enum) </code></pre>
+</section>
+<section>
+  <h2>
+    Object#to_enum
+  </h2>
+  <p>
+    Behaves like Object#enum_for.
+  </p>
+</section>
+<section>
+  <h2>
+    Object#to_enum
+  </h2>
+  <p>
+    Creates an Enumerator out of the receiver #each method by default.
+  </p>
+</section>
+<section>
+  <h2>
+    Enumerator.new
+  </h2>
+  <p>
+    Creates a new Enumerator object, which can be used as an Enumerable.
+  </p>
+</section>
+<section class="center">
+  <pre><code class="ruby">fib = Enumerator.new do |yielder|
+  a = b = 1
+  loop do
+    yielder << a
+    a, b = b, a + b
+  end
+end
+
+p fib.take(10) # => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55] </code></pre>
+</section>
+<section>
+  <h2>
+    Enumerator.new
+  </h2>
+  <p>
+    Use of this form is discouraged. Use Object#enum_for or Object#to_enum instead.
+  </p>
+  <pre><code class="ruby">e = Enumerator.new(ObjectSpace, :each_object)
+    #-> ObjectSpace.enum_for(:each_object)
+
+e.select { |obj| obj.is_a?(Class) }  #=> array of all classes </code></pre>
 </section>
 <section>
   <h2>
@@ -285,15 +361,28 @@ p enum.peek   #raises StopIteration </code></pre>
 </section>
 <section>
   <h2>
-    Enumerator#with_object
+    Enumerator#with_index
   </h2>
-  <p></p>
+  <p>
+    Iterates the given block for each element with an index, which starts from offset.
+  </p>
 </section>
 <section>
   <h2>
     Enumerator#with_index
   </h2>
-  <p></p>
+  <p>
+    If no block is given, returns a new Enumerator that includes the index, starting from offset.
+  </p>
+</section>
+<section>
+  <pre><code class="ruby">puts %w(foo bar baz).map.with_index { |word, i| word + ":" + i.to_s }
+#=> ["0:foo", "1:bar", "2:baz"] </code></pre>
+</section>
+<section data-background="#001">
+  <p class="white">
+    See Enumerable#each_with_index
+  </p>
 </section>
 <section>
   <h2>
@@ -338,6 +427,11 @@ end
 <section class="center" data-background="#000">
   <p class="white">
     kinda
+  </p>
+</section>
+<section data-background="#000">
+  <p class="white">
+    See Enumerable#each_with_object
   </p>
 </section>
       </div>
