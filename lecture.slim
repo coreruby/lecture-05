@@ -79,7 +79,22 @@ section data-background="#000"
   p.white The function parameter takes a single argument of the same type as the members of the collection.
 
 section.center
+  p Enumerator includes Enumerable
+
+section.center
   img.inline src="img/troll.png"
+
+section
+  h2 Enumerator
+  p An Enumerator can be created by the following methods.
+  ul
+    li Kernel#enum_for
+    li Kernel#to_enum
+    li Enumerator.new
+
+section
+  h2 Kernel#enum_for
+  p The easiest way to create an external iterator out of internal one.
 
 section.center
   pre: code.ruby
